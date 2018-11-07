@@ -1,0 +1,18 @@
+<div class="col-xl-8 col-xs-offset-2">
+  <h1> {{ title | async }}</h1>
+  <input class="form-control" [(ngModel)]="carName" />
+  <hr>
+  <button class="btn btn-primary" (click)="loadCars()">Загрузить машины</button>
+  <button class="btn btn-success" (click)="addCars()">Добавить машину</button>
+  <hr>
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let car of cars">
+      <span class="badge-primary" [ngStyle]="{background: car.color}">
+        {{car.id}}
+      </span>
+      {{car.name}}
+      <button class="btn btn-xs btn-info" (click)="setNewColor(car)">Изменить цветь</button>
+      <button class="btn btn-xs btn-danger" (click)="deleteCar(car)">Удалить машину</button>
+    </li>
+  </ul>
+</div>

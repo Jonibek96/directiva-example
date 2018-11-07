@@ -1,0 +1,69 @@
+<div class="col-xl-8 col-xs-offset-2">
+  <form (ngSubmit)="submitForm(form)" #form="ngForm">
+    <div ngModelGroup="user" #user="ngModelGroup">
+      <div class="form-group" [ngClass]="{'has-error': email.invalid && email.touched}">
+        <label>Email</label>
+        <input
+          type="text"
+          class="form-control"
+          ngModel
+          name="mail"
+          required
+          email
+          #email="ngModel"
+        />
+        <p *ngIf="email.invalid && email.touched">Введите коректный email</p>
+        <button type="button" class="btn btn-primary"  (click)="addRandEmail()">Добавить случайное email</button>
+      </div>
+      <div class="form-group" [ngClass]="{'has-error': pass.invalid && pass.touched}">
+        <label>Парол</label>
+        <input
+          type="password"
+          class="form-control"
+          ngModel
+          name="pass"
+          #pass="ngModel"
+          required
+        />
+        <p *ngIf="pass.invalid && pass.touched">Парол не должен быть пустой</p>
+      </div>
+
+    </div>
+    <div>
+      <label>Выберите страну</label>
+      <select
+        class="form-control"
+        [ngModel]="defaultCountre"
+        name="country"
+        required
+      >
+        <option value="tj">Таджикистан</option>
+        <option value="afg">Афганистан</option>
+        <option value="ru">Россия</option>
+      </select>
+    </div>
+    <div class="radio" *ngFor="let ans of answer">
+      <label>
+        <input
+          type="radio"
+          [value]="ans.type"
+          [ngModel]="defoultAnswer"
+          name="answer"
+          required
+        />
+        {{ans.text}}
+      </label>
+    </div>
+    <button
+      class="btn btn-primary"
+      type="submit"
+      [disabled]="!form.valid"
+    >Сохранить
+    </button>
+  </form>
+  <div *ngIf="isSubmit">
+    <pre>
+      {{formdata | json}}
+    </pre>
+  </div>
+</div>

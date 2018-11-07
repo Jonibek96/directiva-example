@@ -1,0 +1,47 @@
+<!--<div class="container">-->
+  <!--<div class="col-xl-8 col-xs-offset-2">-->
+
+  <!--<h3 appBackground [hoverColor] = "'red'" [defaultColor] = "'transparent'">{{headerText}}</h3>-->
+  <!--<ul class="list-group">-->
+    <!--<li class="list-group-item" *ngFor="let item of items" (click)="onclick(item)">-->
+      <!--{{item}}-->
+    <!--</li>-->
+  <!--</ul>-->
+    <!--<div [ngSwitch]="current">-->
+      <!--<p *ngSwitchCase="1">1</p>-->
+      <!--<p *ngSwitchCase="2">2</p>-->
+      <!--<p *ngSwitchCase="3">3</p>-->
+      <!--<p *ngSwitchCase="4">4</p>-->
+      <!--<p *ngSwitchDefault>default</p>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
+
+<!--<app-form></app-form>-->
+<!--<app-reactiv-f></app-reactiv-f>-->
+<!--<app-http-serv></app-http-serv>-->
+<div class="container">
+  <nav style="margin-bottom: 20px;" class="navbar navbar-default">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav">
+        <li
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact: true}"
+        >
+          <a routerLink="/">Главная</a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="/cars">Машины</a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="/new">Новая</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="row">
+    <div class="col-xl-10 col-xs-offset-1">
+    <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

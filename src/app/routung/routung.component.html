@@ -1,0 +1,21 @@
+<a routerLink="/cars"></a>
+<h2>Страница машин</h2>
+<hr>
+<div class="row">
+  <div class="col-xl-4">
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let car of cars">
+        <a
+          [routerLink]="['/cars', car.id, car.name]"
+          [queryParams]="{year: car.year, color: car.color }"
+        >
+          {{car.name}}</a>
+      </li>
+    </ul>
+  </div>
+  <div class="col-xl-8">
+  <router-outlet></router-outlet>
+  </div>
+</div>
+
+

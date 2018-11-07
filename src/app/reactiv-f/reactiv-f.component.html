@@ -1,0 +1,62 @@
+<div class="col-xl-8 col-xs-offset-2">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div formGroupName="user">
+      <div class="form-group"
+           [ngClass]="{'has-error': form.get('user.email').invalid && form.get('user.email').touched }"
+      >
+        <label>Email</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="email"
+        />
+        <p *ngIf="form.get('user.email').invalid && form.get('user.email').touched "
+        >
+          <span *ngIf="form.get('user.email').errors['email']">Введите корректый email</span>
+          <span *ngIf="form.get('user.email').errors['emailIsUsed']">Такой email уже существует</span>
+        </p>
+      </div>
+      <div class="form-group"
+           [ngClass]="{'has-error': form.get('user.pass').invalid && form.get('user.pass').touched }"
+      >
+        <label>Парол</label>
+        <input
+          type="password"
+          class="form-control"
+          formControlName="pass"
+        />
+        <p *ngIf="form.get('user.pass').invalid && form.get('user.pass').touched ">
+          <span *ngIf="form.get('user.pass').errors['required']">Пароль не должен быть пустым!</span>
+          <span *ngIf="form.get('user.pass').errors['errorLength']">Пароль не менще {{charsCount}}x символов</span>
+        </p>
+      </div>
+    </div>
+    <div>
+      <label>Выберите страну</label>
+      <select
+        class="form-control"
+        formControlName="country"
+      >
+        <option value="tj">Таджикистан</option>
+        <option value="afg">Афганистан</option>
+        <option value="ru">Россия</option>
+      </select>
+    </div>
+    <div class="radio" *ngFor="let ans of answer">
+      <label>
+        <input
+          type="radio"
+          [value]="ans.type"
+          formControlName="answer"
+        />
+        {{ans.text}}
+      </label>
+    </div>
+    <button
+      class="btn btn-primary"
+      type="submit"
+      [disabled]="!form.valid"
+    >Сохранить
+    </button>
+  </form>
+</div>
